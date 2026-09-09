@@ -1,0 +1,19 @@
+CREATE DATABASE bater_ponto_db;
+
+USE bater_ponto_db;
+
+CREATE TABLE USUARIO (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE REGISTRO_PONTO (
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES USUARIO(id),
+    tipo VARCHAR(50) NOT NULL,
+    data DATE NOT NULL,
+    horario TIME NOT NULL
+);
